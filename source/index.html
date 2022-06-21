@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.min.css">
+  <title>Templates</title>
+</head>
+
+<body class="page-body">
+  <div class="components-wrapper">
+    <div class="container">
+      <h1 class="components-wrapper__title">Компоненты и шаблоны для верстки</h1>
+      <div class="item">Container</div>
+
+      <h2 class="components-wrapper__title-h2">Гридовая сетка</h2>
+      <div class="grid g-cols-12">
+        <div class="item col-1 col-sm-12">col-1</div>
+        <div class="item col-2 col-sm-12">col-2</div>
+        <div class="item col-3 col-sm-12">col-3</div>
+        <div class="item col-4 col-sm-12">col-4</div>
+        <div class="item col-2 col-sm-12">col-2</div>
+        <div class="item col-full">col-full</div>
+      </div>
+
+      <h2 class="components-wrapper__title-h2">Табы</h2>
+      <div class="f-tabs">
+        <ul class="f-tabs__list">
+          <a class="f-tabs__list-link active" href="#f-tabs-1">Огурец</a>
+          <a class="f-tabs__list-link" href="#f-tabs-2">Томат</a>
+          <a class="f-tabs__list-link" href="#f-tabs-3">Баклажан</a>
+          <a class="f-tabs__list-link" href="#f-tabs-4">Капуста</a>
+        </ul>
+        <div class="f-tabs__content">
+          <div class="f-tabs__content-item" id="f-tabs-1">Lorem ipsum 1</div>
+          <div class="f-tabs__content-item" id="f-tabs-2">Lorem ipsum 2</div>
+          <div class="f-tabs__content-item" id="f-tabs-3">Lorem ipsum 3</div>
+          <div class="f-tabs__content-item" id="f-tabs-4">Lorem ipsum 4</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./js/libs.min.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+
+</html>
