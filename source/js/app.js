@@ -13,4 +13,18 @@ $('document').ready(function () {
   $('a[href="#f-modal"]').magnificPopup({
     type: 'inline'
   });
+
+  // Аккордеон
+  $('.f-accordion__item').click(function () {
+    if (!$(this).hasClass('active')) {
+      $('.f-accordion__item-content').slideUp();
+      $('.f-accordion__item').removeClass('active');
+
+      $(this).addClass('active');
+      $(this).find('.f-accordion__item-content').slideDown();
+    } else {
+      $(this).removeClass('active');
+      $(this).find('.f-accordion__item-content').slideUp();
+    }
+  });
 });
