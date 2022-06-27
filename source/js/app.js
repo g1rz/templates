@@ -8,4 +8,9 @@ $('document').ready(function () {
     $('.f-tabs__content-item').not(content).removeClass('active');
     $(content).addClass('active');
   });
+
+  // Popup
+  $('a[href="#f-modal"]').magnificPopup({
+    type: 'inline'
+  });
 });

@@ -4,7 +4,7 @@
 @import 'technical/fonts.scss';
 
 // @import 'libs/slick.scss';
-// @import 'libs/magnific-popup.scss';
+@import 'libs/magnific-popup.scss';
 // @import 'libs/leaflet.scss';
 // @import 'libs/fancybox.scss';
 
@@ -14,4 +14,8 @@
 @import 'components/grid-layout.scss';
 @import 'components/item.scss';
 @import 'components/f-tabs.scss';
+@import 'components/f-modal.scss';
+@import 'components/f-form.scss';
+@import 'components/main-form.scss';
+@import 'components/f-button.scss';
 
