@@ -1,4 +1,5 @@
 //=include swiper/swiper-bundle.min.js
 
 //=include f-tabs.js
+//=include f-popup.js
 
