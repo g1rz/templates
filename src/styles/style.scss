@@ -1,0 +1,14 @@
+@import './config/vars.scss';
+@import './config/mixins.scss';
+@import './config/normalize.scss';
+@import './config/fonts.scss';
+@import './config/another.scss';
+
+@import 'swiper/swiper-vars.scss';
+@import 'swiper/swiper.scss';
+
+@import '../components/page-body/page-body.scss';
+
+@import '../components/container/container.scss';
+@import '../components/grid/grid.scss';
+@import '../components/f-tabs/f-tabs.scss';

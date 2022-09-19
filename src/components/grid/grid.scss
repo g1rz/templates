@@ -236,6 +236,11 @@
 }
 
 @media (max-width: $md) {
+  .grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: $gap-md;
+  }
+
   .col-md-auto {
     grid-column: auto;
   }
@@ -294,6 +299,11 @@
 }
 
 @media (max-width: $sm) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: $gap-sm;
+  }
+
   .col-sm-auto {
     grid-column: auto;
   }

@@ -4,16 +4,21 @@
   align-items: center;
 }
 
-.f-tabs__list-link.active{
-  background-color: $purple;
-  color: $white;
-}
-
-.f-tabs__list-link {
+.f-tabs__list-btn {
   display: block;
   width: 25%;
   padding: 10px;
+  font-family: inherit;
+  font-size: inherit;
   text-align: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.f-tabs__list-btn--active{
+  background-color: $purple;
+  color: $white;
 }
 
 .f-tabs__content-item {
@@ -21,7 +26,7 @@
   display: none;
 }
 
-.f-tabs__content-item.active {
+.f-tabs__content-item--active {
   display: block;
 }
 
