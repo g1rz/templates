@@ -2,4 +2,4 @@
 
 //=include f-tabs.js
 //=include f-popup.js
-
+//=include f-accordeon.js

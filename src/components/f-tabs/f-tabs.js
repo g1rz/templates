@@ -1,4 +1,4 @@
-class Ftabs {
+class FTabs {
   constructor(target, config) {
     const defaultConfig = {};
     this._config = Object.assign(defaultConfig, config);
@@ -46,4 +46,4 @@ class Ftabs {
   }
 }
 
-new Ftabs('.f-tabs');
+new FTabs('.f-tabs');

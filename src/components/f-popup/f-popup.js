@@ -1,4 +1,4 @@
-class Fpopup {
+class FPopup {
   constructor(link) {
     this._link = document.querySelector(link);
     this._currentPopup = this._findPopup();
@@ -41,6 +41,7 @@ class Fpopup {
       if (substract && evt.target === substract) {
         this._currentPopup.classList.remove('f-popup--active');
         this._deleteFadeSubstrate();
+        document.body.style.overflow = '';
       }
     });
   }
@@ -50,4 +51,4 @@ class Fpopup {
   }
 }
 
-new Fpopup('.open-popup');
+new FPopup('.open-popup');
