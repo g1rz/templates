@@ -1,21 +1,21 @@
 class FAccordeon {
   constructor(target, config) {
-    this._el = typeof target === 'string' ? document.querySelector(target) : target;
+    this._el = typeof target === 'string' ? document.querySelectorAll(target) : target;
     const defaultConfig = {
       alwaysOpen: true,
       duration: 350
     };
     this._config = Object.assign(defaultConfig, config);
-    this.addEventListener();
+    this.init();
   }
-  addEventListener() {
-    this._el.addEventListener('click', (e) => {
+  addEventListener(item) {
+    item.addEventListener('click', (e) => {
       const elHeader = e.target.closest('.f-accordeon__header');
       if (!elHeader) {
         return;
       }
       if (!this._config.alwaysOpen) {
-        this._el.querySelectorAll('.f-accordeon__item--show').forEach((el) => {
+        item.querySelectorAll('.f-accordeon__item--show').forEach((el) => {
           if (el.contains(elHeader.parentElement)) {
             return;
           }
@@ -75,6 +75,11 @@ class FAccordeon {
   }
   toggle(el) {
     el.classList.contains('f-accordeon__item--show') ? this.hide(el) : this.show(el);
+  }
+  init() {
+    this._el.forEach((item) => {
+      this.addEventListener(item);
+    });
   }
 }
 
