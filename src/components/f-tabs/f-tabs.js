@@ -1,4 +1,4 @@
-class FTabs {
+export default class FTabs {
   constructor(target, config) {
     const defaultConfig = {};
     this._config = Object.assign(defaultConfig, config);
@@ -45,5 +45,3 @@ class FTabs {
     });
   }
 }
-
-new FTabs('.f-tabs');

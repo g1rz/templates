@@ -1,4 +1,4 @@
-class FPopup {
+export default class FPopup {
   constructor(link) {
     this.links = document.querySelectorAll(link);
     this.closeIcons = document.querySelectorAll('.f-popup__close');
@@ -78,5 +78,3 @@ class FPopup {
     }
   }
 }
-
-new FPopup('.open-popup');

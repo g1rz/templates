@@ -1,4 +1,4 @@
-class FSelect {
+export default class FSelect {
   constructor(select) {
     this._selects = document.querySelectorAll(select);
     this.init();
@@ -56,5 +56,3 @@ class FSelect {
     });
   }
 }
-
-new FSelect('.f-select');

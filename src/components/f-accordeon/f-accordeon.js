@@ -1,4 +1,4 @@
-class FAccordeon {
+export default class FAccordeon {
   constructor(target, config) {
     this._el = typeof target === 'string' ? document.querySelectorAll(target) : target;
     const defaultConfig = {
@@ -82,7 +82,3 @@ class FAccordeon {
     });
   }
 }
-
-new FAccordeon('.f-accordeon', {
-  alwaysOpen: true
-});
