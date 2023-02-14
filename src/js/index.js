@@ -5,11 +5,12 @@ import fselect from '../components/f-select/f-select.js';
 
 function initApp() {
   new ftabs('.f-tabs');
-  new fpopup('.open-popup');
   new faccordeon('.f-accordeon', {
     alwaysOpen: true
   });
   new fselect('.f-select');
+  const popup = new fpopup('.open-popup');
+  popup.init();
 }
 
-initApp();
+document.addEventListener('DOMContentLoaded', initApp());
