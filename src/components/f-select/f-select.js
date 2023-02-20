@@ -1,7 +1,6 @@
 export default class FSelect {
   constructor(select) {
-    this._selects = document.querySelectorAll(select);
-    this.init();
+    this.select = document.querySelector(select);
   }
 
   clickOnSelect(head, body) {
@@ -34,7 +33,7 @@ export default class FSelect {
   closeAnyClick(head, body, title) {
     document.addEventListener('mouseup', (event) => {
       if (event.target != body && event.target != head && event.target != title) {
-        if (event.target.classList.contains('f-select__label--checkbox')) {
+        if (event.target.classList.contains('f-select__label')) {
           return;
         } else {
           body.classList.remove('f-select__body--active');
@@ -44,15 +43,12 @@ export default class FSelect {
     });
   }
   init() {
-    this._selects.forEach((item) => {
-      const select = item;
-      const head = item.querySelector('.f-select__head');
-      const body = item.querySelector('.f-select__body');
-      const title = item.querySelector('.f-select__title');
+    const head = this.select.querySelector('.f-select__head');
+    const body = this.select.querySelector('.f-select__body');
+    const title = this.select.querySelector('.f-select__title');
 
-      this.clickOnSelect(head, body);
-      this.setCheckedName(select, title, head);
-      this.closeAnyClick(head, body, title);
-    });
+    this.clickOnSelect(head, body);
+    this.setCheckedName(this.select, title, head);
+    this.closeAnyClick(head, body, title);
   }
 }

@@ -1,26 +1,23 @@
 export default class FTabs {
-  constructor(target, config) {
-    const defaultConfig = {};
-    this._config = Object.assign(defaultConfig, config);
-    this._elTabs = typeof target === 'string' ? document.querySelector(target) : target;
-    this._elButtons = this._elTabs.querySelectorAll('.f-tabs__list-btn');
-    this._elPanes = this._elTabs.querySelectorAll('.f-tabs__content-item');
-    this._eventShow = new Event('tab.itc.change');
-    this._init();
-    this._events();
+  constructor(target) {
+    this.elTabs = typeof target === 'string' ? document.querySelector(target) : target;
+    this.elButtons = this.elTabs.querySelectorAll('.f-tabs__list-btn');
+    this.elPanes = this.elTabs.querySelectorAll('.f-tabs__content-item');
   }
-  _init() {
-    this._elTabs.setAttribute('role', 'tablist');
-    this._elButtons.forEach((el, index) => {
+
+  setAttributeRoles() {
+    this.elTabs.setAttribute('role', 'tablist');
+    this.elButtons.forEach((el, index) => {
       el.dataset.index = index;
       el.setAttribute('role', 'tab');
-      this._elPanes[index].setAttribute('role', 'tabpanel');
+      this.elPanes[index].setAttribute('role', 'tabpanel');
     });
   }
+
   show(elLinkTarget) {
-    const elPaneTarget = this._elPanes[elLinkTarget.dataset.index];
-    const elLinkActive = this._elTabs.querySelector('.f-tabs__list-btn--active');
-    const elPaneShow = this._elTabs.querySelector('.f-tabs__content-item--active');
+    const elPaneTarget = this.elPanes[elLinkTarget.dataset.index];
+    const elLinkActive = this.elTabs.querySelector('.f-tabs__list-btn--active');
+    const elPaneShow = this.elTabs.querySelector('.f-tabs__content-item--active');
     if (elLinkTarget === elLinkActive) {
       return;
     }
@@ -28,15 +25,24 @@ export default class FTabs {
     elPaneShow ? elPaneShow.classList.remove('f-tabs__content-item--active') : null;
     elLinkTarget.classList.add('f-tabs__list-btn--active');
     elPaneTarget.classList.add('f-tabs__content-item--active');
-    this._elTabs.dispatchEvent(this._eventShow);
     elLinkTarget.focus();
+
+    this.emitEvent();
   }
+
+  emitEvent() {
+    this.elTabs.dispatchEvent(new Event('tab.itc.change'));
+  }
+
   showByIndex(index) {
-    const elLinkTarget = this._elButtons[index];
+    const elLinkTarget = this.elButtons[index];
     elLinkTarget ? this.show(elLinkTarget) : null;
   }
-  _events() {
-    this._elTabs.addEventListener('click', (e) => {
+
+  init() {
+    this.setAttributeRoles();
+
+    this.elTabs.addEventListener('click', (e) => {
       const target = e.target.closest('.f-tabs__list-btn');
       if (target) {
         e.preventDefault();

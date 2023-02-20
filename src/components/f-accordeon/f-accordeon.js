@@ -1,83 +1,83 @@
 export default class FAccordeon {
+  defaultConfig = {
+    alwaysOpen: true,
+    duration: 350
+  };
+
   constructor(target, config) {
-    this._el = typeof target === 'string' ? document.querySelectorAll(target) : target;
-    const defaultConfig = {
-      alwaysOpen: true,
-      duration: 350
-    };
-    this._config = Object.assign(defaultConfig, config);
-    this.init();
+    this.accordion = typeof target === 'string' ? document.querySelector(target) : target;
+    this.config = Object.assign(this.defaultConfig, config);
   }
   addEventListener(item) {
     item.addEventListener('click', (e) => {
-      const elHeader = e.target.closest('.f-accordeon__header');
-      if (!elHeader) {
+      const header = e.target.closest('.f-accordeon__header');
+      if (!header) {
         return;
       }
-      if (!this._config.alwaysOpen) {
+      if (!this.config.alwaysOpen) {
         item.querySelectorAll('.f-accordeon__item--show').forEach((el) => {
-          if (el.contains(elHeader.parentElement)) {
+          if (el.contains(header.parentElement)) {
             return;
           }
-          el !== elHeader.parentElement ? this.toggle(el) : null;
+          el !== header.parentElement ? this.toggle(el) : null;
         });
       }
-      this.toggle(elHeader.parentElement);
+      this.toggle(header.parentElement);
     });
   }
   show(el) {
-    const elBody = el.querySelector('.f-accordeon__body');
-    if (elBody.classList.contains('collapsing') || el.classList.contains('accordion__item_show')) {
+    const body = el.querySelector('.f-accordeon__body');
+    if (body.classList.contains('collapsing') || el.classList.contains('accordion__item_show')) {
       return;
     }
-    elBody.style.display = 'block';
-    const height = elBody.offsetHeight;
-    elBody.style.height = 0;
-    elBody.style.overflow = 'hidden';
-    elBody.style.transition = `height ${this._config.duration}ms ease`;
-    elBody.classList.add('collapsing');
+    body.style.display = 'block';
+    const height = body.offsetHeight;
+    body.style.height = 0;
+    body.style.overflow = 'hidden';
+    body.style.transition = `height ${this.config.duration}ms ease`;
+    body.classList.add('collapsing');
     el.classList.add('f-accordeon__item--slidedown');
-    elBody.offsetHeight;
-    elBody.style.height = `${height}px`;
+    body.offsetHeight;
+    body.style.height = `${height}px`;
     window.setTimeout(() => {
-      elBody.classList.remove('collapsing');
+      body.classList.remove('collapsing');
       el.classList.remove('f-accordeon__item--slidedown');
-      elBody.classList.add('collapse');
+      body.classList.add('collapse');
       el.classList.add('f-accordeon__item--show');
-      elBody.style.display = '';
-      elBody.style.height = '';
-      elBody.style.transition = '';
-      elBody.style.overflow = '';
-    }, this._config.duration);
+      body.style.display = '';
+      body.style.height = '';
+      body.style.transition = '';
+      body.style.overflow = '';
+    }, this.config.duration);
   }
   hide(el) {
-    const elBody = el.querySelector('.f-accordeon__body');
-    if (elBody.classList.contains('collapsing') || !el.classList.contains('f-accordeon__item--show')) {
+    const body = el.querySelector('.f-accordeon__body');
+    if (body.classList.contains('collapsing') || !el.classList.contains('f-accordeon__item--show')) {
       return;
     }
-    elBody.style.height = `${elBody.offsetHeight}px`;
-    elBody.offsetHeight;
-    elBody.style.display = 'block';
-    elBody.style.height = 0;
-    elBody.style.overflow = 'hidden';
-    elBody.style.transition = `height ${this._config.duration}ms ease`;
-    elBody.classList.remove('collapse');
+    body.style.height = `${body.offsetHeight}px`;
+    body.offsetHeight;
+    body.style.display = 'block';
+    body.style.height = 0;
+    body.style.overflow = 'hidden';
+    body.style.transition = `height ${this.config.duration}ms ease`;
+    body.classList.remove('collapse');
     el.classList.remove('f-accordeon__item--show');
-    elBody.classList.add('collapsing');
+    body.classList.add('collapsing');
     window.setTimeout(() => {
-      elBody.classList.remove('collapsing');
-      elBody.classList.add('collapse');
-      elBody.style.display = '';
-      elBody.style.height = '';
-      elBody.style.transition = '';
-      elBody.style.overflow = '';
-    }, this._config.duration);
+      body.classList.remove('collapsing');
+      body.classList.add('collapse');
+      body.style.display = '';
+      body.style.height = '';
+      body.style.transition = '';
+      body.style.overflow = '';
+    }, this.config.duration);
   }
   toggle(el) {
     el.classList.contains('f-accordeon__item--show') ? this.hide(el) : this.show(el);
   }
   init() {
-    this._el.forEach((item) => {
+    this.accordion.forEach((item) => {
       this.addEventListener(item);
     });
   }
