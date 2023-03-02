@@ -1,6 +1,6 @@
 export default class FSelect {
   constructor(select) {
-    this.select = document.querySelector(select);
+    this.selectsAll = document.querySelectorAll(select);
   }
 
   clickOnSelect(head, body) {
@@ -43,12 +43,18 @@ export default class FSelect {
     });
   }
   init() {
-    const head = this.select.querySelector('.f-select__head');
-    const body = this.select.querySelector('.f-select__body');
-    const title = this.select.querySelector('.f-select__title');
+    if (this.selectsAll.length === 0) 
+      return;
 
-    this.clickOnSelect(head, body);
-    this.setCheckedName(this.select, title, head);
-    this.closeAnyClick(head, body, title);
+    this.selectsAll.forEach(el => {
+      const head = el.querySelector('.f-select__head');
+      const body = el.querySelector('.f-select__body');
+      const title = el.querySelector('.f-select__title');
+
+      this.clickOnSelect(head, body);
+      this.setCheckedName(el, title, head);
+      this.closeAnyClick(head, body, title);
+    })
+    console.log(this.selectsAll);
   }
 }
